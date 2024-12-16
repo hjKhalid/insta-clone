@@ -160,6 +160,10 @@ const Feed = () => {
 
     initializeFeed();
   }, []);
+
+  const navigateToProfile = () => {
+    navigate("/viewprofile");
+  };
   console.log(posts);
 
   return (
@@ -167,6 +171,7 @@ const Feed = () => {
       {/* Header Section */}
       <div className="flex items-center bg-white p-4 mb-6">
         <img
+          onClick={navigateToProfile}
           src={userProfilePhoto}
           alt="Profile"
           className="w-12 h-12 rounded-full"
@@ -254,9 +259,7 @@ const Feed = () => {
               >
                 <div className="flex items-center mb-2">
                   <img
-                    src={
-                    post.media ||  "https://via.placeholder.com/40"
-                    }
+                    src={post.media || "https://via.placeholder.com/40"}
                     alt="User"
                     className="w-10 h-10 rounded-full"
                   />
@@ -265,9 +268,7 @@ const Feed = () => {
                       {post.username || "Unknown User"}
                     </h2>
                     <p className="text-xs text-gray-500">
-                      {new Date(
-                        post.time?.seconds * 1000
-                      ).toLocaleString()}
+                      {new Date(post.time?.seconds * 1000).toLocaleString()}
                     </p>
                   </div>
                 </div>
